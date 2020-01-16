@@ -1,0 +1,75 @@
+.table-dark {
+    color: #fff;
+    background: linear-gradient(to top, #24c6dc, #514a9d); 
+    width: 1040px;
+    margin: 5px auto 70px auto;
+}
+
+.table-title, .add-form, .update-form {
+    margin: 70px auto 0 auto;
+}
+
+.table-title {
+    width: 1040px;
+}
+
+.add-form, .update-form {
+    width: 500px;
+}
+
+thead {
+    background-color: #514a9d;
+    background: linear-gradient(to top, rgb(78, 116, 178), #514a9d); 
+}
+
+.table td, .table th {
+    border: none;
+    text-align: center;
+}
+
+h2 {
+    font-weight: 200;
+}
+
+.add-new {
+    background-color: #514a9d;
+    padding-right: 40px;
+    padding-left: 40px;
+    margin-left: 178px;
+}
+
+.col-sm-4 {
+    padding-right: 0;
+    padding-left: 0;
+}
+
+.fa-pencil, .fa-trash {
+    margin: 0 15px 0 15px;
+}
+
+.fa-trash:hover {
+    color:red;
+}
+
+.fa-pencil:hover {
+    color: yellow;
+}
+
+.reset, button[type="submit"] {
+    width: 49%;
+}
+
+.reset {
+    margin-left: 8px;
+    background-color: #514a9d;
+}
+
+button[type="submit"] {
+    background-color: #514a9d;
+}
+
+.reset1 {
+    width: 100%;
+    margin-left: 0;
+    background-color: #514a9d;
+}

@@ -1,0 +1,48 @@
+<app-performer-header></app-performer-header>
+<form *ngIf="saved == false && changingLegalUserData.UserID" autocomplete="off"
+  class="update-form text-center border border-light p-5" (ngSubmit)="updateLegalUser();" name="update-form">
+  <h2>Edit personal data</h2>
+  <input type="text" id="companyname" name="companyname" [(ngModel)]="changingLegalUserData.CompanyName"
+    class="form-control mb-4" placeholder="Company name">
+  <select class="custom-select mb-4" [(ngModel)]="changingLegalUserData.CountryID" name="selectedCountry">
+    <option selected disabled value="none">Select country...</option>
+    <option *ngFor="let country of countries" value={{country.CountryID}}>{{country.CountryName}}</option>
+  </select>
+  <input type="text" id="phonenumber" name="phonenumber" [(ngModel)]="changingLegalUserData.PhoneNumber"
+    class="form-control mb-4" placeholder="Phone number">
+  <input type="text" id="email" name="email" [(ngModel)]="changingLegalUserData.Email" class="form-control mb-4"
+    placeholder="Email: example@mail.com">
+  <input type="text" id="password" name="password" [(ngModel)]="changingLegalUserData.Password"
+    class="form-control mb-4" placeholder="Password">
+  <button class="btn btn-info" type="submit"
+    *ngIf="selectedCountry != 'none' && changingLegalUserData.PhoneNumber && changingLegalUserData.Email && changingLegalUserData.Password && changingLegalUserData.CompanyName">Save</button>
+  <button class="btn btn-info reset" (click)="undoChanges();"
+    [ngClass]="{'reset1': !(selectedCountry != 'none' && changingLegalUserData.PhoneNumber && changingLegalUserData.Email && changingLegalUserData.Password && changingLegalUserData.CompanyName)}"><i
+      class="fa fa-times"></i></button>
+</form>
+<form *ngIf="saved == false && changingPrivateUserData.UserID" autocomplete="off"
+  class="update-form text-center border border-light p-5" (ngSubmit)="updatePrivateUser();" name="update-form">
+  <h2>Edit personal data</h2>
+  <input type="text" id="name" name="name" [(ngModel)]="changingPrivateUserData.Name" class="form-control mb-4"
+    placeholder="Name">
+  <input type="text" id="surname" name="surname" [(ngModel)]="changingPrivateUserData.Surname" class="form-control mb-4"
+    placeholder="Surname">
+  <select class="custom-select mb-4" [(ngModel)]="changingPrivateUserData.CountryID" name="selectedCountry">
+    <option selected disabled value="none">Select country...</option>
+    <option *ngFor="let country of countries" value={{country.CountryID}}>{{country.CountryName}}</option>
+  </select>
+  <input type="text" id="phonenumber" name="phonenumber" [(ngModel)]="changingPrivateUserData.PhoneNumber"
+    class="form-control mb-4" placeholder="Phone number">
+  <input type="text" id="email" name="email" [(ngModel)]="changingPrivateUserData.Email" class="form-control mb-4"
+    placeholder="Email: example@mail.com">
+  <input type="text" id="password" name="password" [(ngModel)]="changingPrivateUserData.Password"
+    class="form-control mb-4" placeholder="Password">
+  <button class="btn btn-info" type="submit"
+    *ngIf="selectedCountry != 'none' && changingPrivateUserData.PhoneNumber && changingPrivateUserData.Email && changingPrivateUserData.Password && changingPrivateUserData.Name && changingPrivateUserData.Surname">Save</button>
+  <button class="btn btn-info reset" (click)="undoChanges();"
+    [ngClass]="{'reset1': !(selectedCountry != 'none' && changingPrivateUserData.PhoneNumber && changingPrivateUserData.Email && changingPrivateUserData.Password && changingPrivateUserData.Name && changingPrivateUserData.Surname)}"><i
+      class="fa fa-times"></i></button>
+</form>
+<div *ngIf="saved == true" class="alert alert-success" role="alert">
+  Changes saved!
+</div>

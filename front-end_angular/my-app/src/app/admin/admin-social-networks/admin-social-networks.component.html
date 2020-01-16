@@ -1,0 +1,49 @@
+<app-admin-header></app-admin-header>
+<form autocomplete="off" class="add-form text-center border border-light p-5"
+  (ngSubmit)="createSocialNetwork(); resetCreateForm();" name="create-form" *ngIf="visibleForm == 'create'">
+  <h2>Add social network</h2>
+  <input type="text" id="name" name="name" [(ngModel)]="data.NetworkName" class="form-control mb-4" placeholder="Name">
+  <button class="btn btn-info" type="submit" *ngIf="data.NetworkName">Add</button>
+  <button class="btn btn-info reset" (click)="resetCreateForm(); visibleForm = ''"
+    [ngClass]="{'reset1': !(data.NetworkName)}"><i class="fa fa-times"></i></button>
+</form>
+<form autocomplete="off" class="update-form text-center border border-light p-5"
+  (ngSubmit)="updateSocialNetwork(); resetUpdateForm();" name="update-form" *ngIf="visibleForm == 'update'">
+  <h2>Update social network</h2>
+  <input type="text" id="name" name="name" [(ngModel)]="changingData.NetworkName" class="form-control mb-4"
+    placeholder="Name">
+  <button class="btn btn-info" type="submit" *ngIf="changingData.NetworkName">Update</button>
+  <button class="btn btn-info reset" (click)="resetUpdateForm(); visibleForm = ''"
+    [ngClass]="{'reset1': !(changingData.NetworkName)}"><i class="fa fa-times"></i></button>
+</form>
+<div class="table-title">
+  <div class="row">
+    <div class="col-sm-8">
+      <h2>Social networks <b>Details</b></h2>
+    </div>
+    <div class="col-sm-4">
+      <button type="button" class="btn btn-info add-new" (click)="visibleForm = 'create'"><i class="fa fa-plus"></i> Add
+        New</button>
+    </div>
+  </div>
+</div>
+<table class="table table-striped table-dark">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Social Network</th>
+      <th scope="col">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let network of socialnetworks">
+      <th scope="row">{{network.SocialNetworkID}}</th>
+      <td>{{network.NetworkName}}</td>
+      <td>
+        <a title="Edit" (click)="getSocialNetworkForUpdate(network.SocialNetworkID); visibleForm = 'update'"><i
+            class="fa fa-pencil"></i></a>
+        <a title="Delete" (click)="deleteSocialNetwork(network.SocialNetworkID);"><i class="fa fa-trash"></i></a>
+      </td>
+    </tr>
+  </tbody>
+</table>

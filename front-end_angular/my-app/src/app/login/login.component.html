@@ -1,0 +1,25 @@
+<div class="bg">
+    <div class="signup-form">
+        <form autocomplete="off" name="loginform" (ngSubmit)="loginUser();">
+            <h2>Login</h2>
+            <div class="form-group">
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="fa fa-paper-plane"></i></span>
+                    <input type="email" [(ngModel)]="data.Email" class="form-control" name="email"
+                        placeholder="Email Address" required="required">
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+                    <input type="text" [(ngModel)]="data.Password" class="form-control" name="password"
+                        placeholder="Password" required="required">
+                </div>
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary btn-block btn-lg">Sign In</button>
+            </div>
+            <div class="text-center">Not registered? <a routerLink="/registration">Create an account</a>.</div>
+        </form>
+    </div>
+</div>

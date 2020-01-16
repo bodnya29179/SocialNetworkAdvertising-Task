@@ -1,0 +1,7 @@
+TYPE=TRIGGERS
+triggers='CREATE DEFINER=`root`@`localhost` TRIGGER `after_performer_services_insert` AFTER INSERT ON `performerservices` FOR EACH ROW BEGIN\nIF NEW.Price < 0 THEN\nSIGNAL SQLSTATE \'45001\' SET MESSAGE_TEXT = \'Price should be positive!\';\nEND IF;\nIF NEW.Subscribers < 0 THEN\nSIGNAL SQLSTATE \'45001\' SET MESSAGE_TEXT = \'Subscribers count should be positive!\';\nEND IF;\nSET @user_type = (SELECT TypeName FROM usertypes INNER JOIN users WHERE usertypes.TypeID = users.TypeID AND users.UserID = NEW.UserID);\nIF @user_type != \'performer\' THEN\nSIGNAL SQLSTATE \'45001\' SET MESSAGE_TEXT = \'User must be a performer!\';\nEND IF;\nEND' 'CREATE DEFINER=`root`@`localhost` TRIGGER `after_performer_services_update` AFTER UPDATE ON `performerservices` FOR EACH ROW BEGIN\nIF NEW.Price < 0 THEN\nSIGNAL SQLSTATE \'45001\' SET MESSAGE_TEXT = \'Price should be positive!\';\nEND IF;\nIF NEW.Subscribers < 0 THEN\nSIGNAL SQLSTATE \'45001\' SET MESSAGE_TEXT = \'Subscribers count should be positive!\';\nEND IF;\nSET @user_type = (SELECT TypeName FROM usertypes INNER JOIN users WHERE usertypes.TypeID = users.TypeID AND users.UserID = NEW.UserID);\nIF @user_type != \'performer\' THEN\nSIGNAL SQLSTATE \'45001\' SET MESSAGE_TEXT = \'User must be a performer!\';\nEND IF;\nEND'
+sql_modes=1342177280 1342177280
+definers='root@localhost' 'root@localhost'
+client_cs_names='utf8mb4' 'utf8mb4'
+connection_cl_names='utf8mb4_unicode_ci' 'utf8mb4_unicode_ci'
+db_cl_names='utf8mb4_unicode_ci' 'utf8mb4_unicode_ci'

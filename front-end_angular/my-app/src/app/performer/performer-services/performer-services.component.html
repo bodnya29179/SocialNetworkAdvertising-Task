@@ -1,0 +1,111 @@
+<app-performer-header></app-performer-header>
+<form autocomplete="off" class="add-form text-center border border-light p-5" name="create-form"
+  *ngIf="visibleForm == 'create'">
+  <h2>Add service</h2>
+  <select class="custom-select mb-4" [(ngModel)]="data.SocialNetworkID" name="socialnetwork">
+    <option selected disabled value="none">Select social network...</option>
+    <option *ngFor="let network of socialnetworks" value={{network.SocialNetworkID}}>{{network.NetworkName}}</option>
+  </select>
+  <input type="text" id="profileid" name="profileid" [(ngModel)]="data.ProfileID" class="form-control mb-4"
+    placeholder="Profile ID">
+  <input type="number" id="subscribers" name="subscribers" [(ngModel)]="data.Subscribers" class="form-control mb-4"
+    placeholder="Subscribers" min="1">
+  <input type="number" id="man" name="man" [(ngModel)]="data.ManAudience"
+    class="form-control mb-4 input-width left-elem" placeholder="Man audience, %" min="0">
+  <input type="number" id="woman" name="woman" [(ngModel)]="data.WomanAudience"
+    class="form-control mb-4 input-width right-elem" placeholder="Woman audience, %" min="0">
+  <div *ngIf="count >= 1">
+    <select class="custom-select mb-4 input-width left-elem" [(ngModel)]="data.CountryID1" style="margin-top: 19px;"
+      name="country1">
+      <option selected disabled value="none">Select country...</option>
+      <option *ngFor="let country of countries" value={{country.CountryID}}>{{country.CountryName}}</option>
+    </select>
+    <input type="number" id="countryaudience1" name="countryaudience1" [(ngModel)]="data.CountryAudience1"
+      class="form-control mb-4 input-width right-elem" placeholder="Audience, %" min="0">
+  </div>
+  <div *ngIf="count >= 2">
+    <select class="custom-select mb-4 input-width left-elem" [(ngModel)]="data.CountryID2" style="margin-top: 19px;"
+      name="country2">
+      <option selected disabled value="none">Select country...</option>
+      <option *ngFor="let country of countries" value={{country.CountryID}}>{{country.CountryName}}</option>
+    </select>
+    <input type="number" id="countryaudience2" name="countryaudience2" [(ngModel)]="data.CountryAudience2"
+      class="form-control mb-4 input-width right-elem" placeholder="Audience, %" min="0">
+  </div>
+  <div *ngIf="count >= 3">
+    <select class="custom-select mb-4 input-width left-elem" [(ngModel)]="data.CountryID3" style="margin-top: 19px;"
+      name="country3">
+      <option selected disabled value="none">Select country...</option>
+      <option *ngFor="let country of countries" value={{country.CountryID}}>{{country.CountryName}}</option>
+    </select>
+    <input type="number" id="countryaudience3" name="countryaudience3" [(ngModel)]="data.CountryAudience3"
+      class="form-control mb-4 input-width right-elem" placeholder="Audience, %" min="0">
+  </div>
+  <div *ngIf="count >= 4">
+    <select class="custom-select mb-4 input-width left-elem" [(ngModel)]="data.CountryID4" style="margin-top: 19px;"
+      name="country4">
+      <option selected disabled value="none">Select country...</option>
+      <option *ngFor="let country of countries" value={{country.CountryID}}>{{country.CountryName}}</option>
+    </select>
+    <input type="number" id="countryaudience4" name="countryaudience4" [(ngModel)]="data.CountryAudience4"
+      class="form-control mb-4 input-width right-elem" placeholder="Audience, %" min="0">
+  </div>
+  <div *ngIf="count >= 5">
+    <select class="custom-select mb-4 input-width left-elem" [(ngModel)]="data.CountryID5" style="margin-top: 19px;"
+      name="country5">
+      <option selected disabled value="none">Select country...</option>
+      <option *ngFor="let country of countries" value={{country.CountryID}}>{{country.CountryName}}</option>
+    </select>
+    <input type="number" id="countryaudience5" name="countryaudience5" [(ngModel)]="data.CountryAudience5"
+      class="form-control mb-4 input-width right-elem" placeholder="Audience, %" min="0">
+  </div>
+  <button class="btn btn-info btn-circle" *ngIf="count < 5" (click)="addCountry()"><i class="fa fa-plus"></i></button>
+  <button class="btn btn-info btn-circle" *ngIf="count > 1" (click)="deleteCountry()"><i
+      class="fa fa-minus"></i></button>
+  <input type="number" id="price" name="price" [(ngModel)]="data.Price" class="form-control mb-4" placeholder="Price, $"
+    min="0">
+  <button class="btn btn-info btn-submit" (click)="createPerformerService();"
+    *ngIf="this.data.SocialNetworkID && this.data.ProfileID && this.data.Subscribers && this.data.ManAudience && this.data.WomanAudience && this.data.Price && this.data.CountryID1 && this.data.CountryAudience1">Add</button>
+  <button class="btn btn-info reset" (click)="resetCreateForm(); visibleForm = ''"
+    [ngClass]="{'reset1': !(this.data.SocialNetworkID && this.data.ProfileID && this.data.Subscribers && this.data.ManAudience && this.data.WomanAudience && this.data.CountryID1 && this.data.CountryAudience1 && this.data.Price)}"><i
+      class="fa fa-times"></i></button>
+</form>
+<div class="table-title">
+  <div class="row">
+    <div class="col-sm-8">
+      <h2>Services <b>Details</b></h2>
+    </div>
+    <div class="col-sm-4">
+      <button type="button" class="btn btn-info add-new" (click)="visibleForm = 'create'"><i class="fa fa-plus"></i> Add
+        New</button>
+    </div>
+  </div>
+</div>
+<table class="table table-striped table-dark">
+  <thead>
+    <tr>
+      <th scope="col">Service</th>
+      <th scope="col">Social Network</th>
+      <th scope="col">Profile ID</th>
+      <th scope="col">Subscribers</th>
+      <th scope="col">Country Audience</th>
+      <th scope="col">Gender Audience</th>
+      <th scope="col">Price</th>
+      <th scope="col">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let service of performerservicesforcountry">
+      <th scope="row">#{{service.ServiceID}}</th>
+      <td>{{service.NetworkName}}</td>
+      <td>{{service.ProfileID}}</td>
+      <td>{{service.Subscribers}}</td>
+      <td>{{service.CountryAudience}}</td>
+      <td>{{service.GenderAudience}}</td>
+      <td>{{service.Price}}$</td>
+      <td>
+        <a title="Delete service" (click)="deletePerformerService(service.ServiceID);"><i class="fa fa-trash"></i></a>
+      </td>
+    </tr>
+  </tbody>
+</table>

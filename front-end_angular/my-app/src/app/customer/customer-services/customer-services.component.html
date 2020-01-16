@@ -1,0 +1,132 @@
+<app-customer-header></app-customer-header>
+<div>
+  <div class="container">
+    <div class="d-inline-block">
+      <fieldset class="scheduler-border">
+        <legend class="scheduler-border country-legend">Countries</legend>
+        <div class="control-group">
+          <label *ngFor="let country of countries" class="form-check-label move-right">
+            <input [(ngModel)]="country.checked" class="form-check-input" type="checkbox"
+              value={{country.CountryID}}>{{country.CountryName}}
+          </label>
+        </div>
+      </fieldset>
+    </div>
+    <div class="d-inline-block">
+      <fieldset class="scheduler-border">
+        <legend class="scheduler-border social-networks-legend">Social Networks</legend>
+        <div class="control-group">
+          <label *ngFor="let network of socialnetworks" class="form-check-label move-right">
+            <input [(ngModel)]="network.checked" class="form-check-input" type="checkbox"
+              value={{network.SocialNetworkID}}>{{network.NetworkName}}
+          </label>
+        </div>
+      </fieldset>
+    </div>
+  </div>
+  <div class="container">
+    <div class="d-inline-block">
+      <fieldset class="scheduler-border fieldset-height">
+        <legend class="scheduler-border price-legend">Price</legend>
+        <div class="control-group">
+          <input autocomplete="off" min={{pricefrommin}} max={{pricetomax}} type="number" id="pricefrom"
+            name="pricefrom" [(ngModel)]="pricefrom" class="form-control mb-4 d-inline-block from" placeholder="From">
+          <input autocomplete="off" min={{pricefrommin}} max={{pricetomax}} type="number" id="priceto" name="priceto"
+            [(ngModel)]="priceto" class="form-control mb-4 d-inline-block to" placeholder="To">
+        </div>
+      </fieldset>
+    </div>
+    <div class="d-inline-block">
+      <fieldset class="scheduler-border fieldset-height">
+        <legend class="scheduler-border subscribers-legend">Subscribers</legend>
+        <div class="control-group">
+          <input autocomplete="off" min={{subscribersfrommin}} max={{subscriberstomax}} type="number"
+            id="subscribersfrom" name="subscribersfrom" [(ngModel)]="subscribersfrom"
+            class="form-control mb-4 d-inline-block from" placeholder="From">
+          <input autocomplete="off" min={{subscribersfrommin}} max={{subscriberstomax}} type="number" id="subscribersto"
+            name="subscribersto" [(ngModel)]="subscribersto" class="form-control mb-4 d-inline-block to"
+            placeholder="To">
+        </div>
+      </fieldset>
+    </div>
+  </div>
+  <div class="container">
+    <div class="d-inline-block">
+      <fieldset class="scheduler-border">
+        <legend class="scheduler-border genders-legend">Genders</legend>
+        <div class="control-group">
+          <label *ngFor="let gender of genders" class="form-check-label move-right">
+            <input [(ngModel)]="gender.checked" class="form-check-input" type="checkbox"
+              value={{gender.GenderID}}>{{gender.GenderName}}
+          </label>
+        </div>
+      </fieldset>
+    </div>
+    <div class="d-inline-block">
+      <div class="control-group">
+        <a title="Filter by price" (click)="filter()" class="btn btn-info btn1">Filter <i class="fa fa-filter"></i></a>
+        <a title="Filter by price" (click)="resetFilter()" class="btn btn-info btn2">Reset <i
+            class="fa fa-times"></i></a>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="table-title">
+  <div class="row">
+    <div class="col-sm-8">
+      <h2>Services <b>Details</b></h2>
+    </div>
+    <div class="col-sm-4">
+      <select class="custom-select mb-4 sorting-type" [(ngModel)]="sortingType" (change)="changeSort()">
+        <option selected value="0">Without sorting</option>
+        <option value="1">Price from MIN to MAX</option>
+        <option value="2">Price from MAX to MIN</option>
+        <option value="3">Subscribers from MIN to MAX</option>
+        <option value="4">Subscribers from MAX to MIN</option>
+      </select>
+    </div>
+  </div>
+</div>
+<table class="table table-striped table-dark">
+  <thead>
+    <tr>
+      <th scope="col">Service</th>
+      <th scope="col">Social Network</th>
+      <th scope="col">Profile ID</th>
+      <th scope="col">Subscribers</th>
+      <th scope="col">Country Audience</th>
+      <th scope="col">Gender Audience</th>
+      <th scope="col">Price</th>
+      <th scope="col">Performer</th>
+      <th scope="col">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let service of performerservicesforcountry">
+      <th scope="row">#{{service.ServiceID}}</th>
+      <td>{{service.NetworkName}}</td>
+      <td>{{service.ProfileID}}</td>
+      <td>{{service.Subscribers}}</td>
+      <td>{{service.CountryAudience}}</td>
+      <td>{{service.GenderAudience}}</td>
+      <td>{{service.Price}}$</td>
+      <td>{{service.Performer}}</td>
+      <td>
+        <a class="select-service" title="Choose a service"
+          (click)="selectService(service.ServiceID, service.Performer);" data-toggle="modal"
+          data-target="#myModal">Select <i class="fa fa-arrow-right"></i></a>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<div id="myModal" class="modal fade">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Your order is completed and pending.</h4>
+      </div>
+      <div class="modal-body">To view the order, go to the tab "Orders".</div>
+      <div class="modal-footer"><button class="btn btn-default" type="button" data-dismiss="modal">Close</button></div>
+    </div>
+  </div>
+</div>

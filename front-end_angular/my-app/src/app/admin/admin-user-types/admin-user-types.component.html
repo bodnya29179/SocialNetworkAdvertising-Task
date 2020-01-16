@@ -1,0 +1,48 @@
+<app-admin-header></app-admin-header>
+<form autocomplete="off" class="add-form text-center border border-light p-5"
+  (ngSubmit)="createUserType(); resetCreateForm();" name="create-form" *ngIf="visibleForm == 'create'">
+  <h2>Add user type</h2>
+  <input type="text" id="name" name="name" [(ngModel)]="data.TypeName" class="form-control mb-4" placeholder="Name">
+  <button class="btn btn-info" type="submit" *ngIf="data.TypeName">Add</button>
+  <button class="btn btn-info reset" (click)="resetCreateForm(); visibleForm = ''"
+    [ngClass]="{'reset1': !(data.TypeName)}"><i class="fa fa-times"></i></button>
+</form>
+<form autocomplete="off" class="update-form text-center border border-light p-5"
+  (ngSubmit)="updateUserType(); resetUpdateForm();" name="update-form" *ngIf="visibleForm == 'update'">
+  <h2>Update user type</h2>
+  <input type="text" id="name" name="name" [(ngModel)]="changingData.TypeName" class="form-control mb-4"
+    placeholder="Name">
+  <button class="btn btn-info" type="submit" *ngIf="changingData.TypeName">Update</button>
+  <button class="btn btn-info reset" (click)="resetUpdateForm(); visibleForm = ''"
+    [ngClass]="{'reset1': !(changingData.TypeName)}"><i class="fa fa-times"></i></button>
+</form>
+<div class="table-title">
+  <div class="row">
+    <div class="col-sm-8">
+      <h2>User types <b>Details</b></h2>
+    </div>
+    <div class="col-sm-4">
+      <button disabled type="button" class="btn btn-info add-new" (click)="visibleForm = 'create'"><i
+          class="fa fa-plus"></i> Add New</button>
+    </div>
+  </div>
+</div>
+<table class="table table-striped table-dark">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">User Type</th>
+      <!-- <th scope="col">Actions</th> -->
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let type of usertypes">
+      <th scope="row">{{type.TypeID}}</th>
+      <td>{{type.TypeName}}</td>
+      <!-- <td>
+        <a  title="Edit" (click)="getUserTypeForUpdate(type.TypeID); visibleForm = 'update'"><i class="fa fa-pencil"></i></a>
+        <a title="Delete" (click)="deleteUserType(type.TypeID);"><i class="fa fa-trash"></i></a>
+      </td> -->
+    </tr>
+  </tbody>
+</table>

@@ -1,0 +1,47 @@
+.table-dark {
+    color: #fff;
+    background: linear-gradient(to top, #24c6dc, #514a9d); 
+    width: 1300px;
+    margin: 5px auto 70px auto;
+}
+
+.table-title {
+    margin: 70px auto 0 auto;
+    width: 1300px;
+}
+
+thead {
+    background-color: #514a9d;
+    background: linear-gradient(to top, rgb(78, 116, 178), #514a9d); 
+}
+
+.table td, .table th {
+    border: none;
+    text-align: center;
+}
+
+h2 {
+    font-weight: 200;
+}
+
+.col-sm-4 {
+    padding-right: 0;
+    padding-left: 0;
+}
+
+.not-found-data {
+    margin-top: 100px;
+    text-align: center;
+}
+
+.fa-thumbs-down:hover {
+    color:red;
+}
+
+.fa-thumbs-up:hover {
+    color: lime;
+}
+
+.fa-thumbs-down, .fa-thumbs-up {
+    margin: 0 15px 0 15px;
+}
