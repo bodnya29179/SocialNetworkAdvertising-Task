@@ -1,5 +1,5 @@
 # Social Network Advertising
-This project was created using the Angular CLI (v. 8.3.12) and the Node.js (v. 10.15.3) server environment. The following packages (dependencies) are used for the server side: cors (v. 2.8.5), express (v. 4.17.1), mysql (v. 2.17.1), nodemon (v. 1.19.4). The following packages are used for the client part: bootstrap, jquery, font-awesome, angular-font-awesome.
+This project was created using the Angular CLI (v. 7.2.0) and the Node.js (v. 10.15.3) server environment. The following packages (dependencies) are used for the server side: cors (v. 2.8.5), express (v. 4.16.4), mysql (v. 2.16.0), nodemon (v. 1.18.11). The following packages are used for the client part: bootstrap, jquery, font-awesome, angular-font-awesome.
 The "SocialNetworkAdvertising" application includes the following user roles: customer, performer, admin.
 Description of roles:
 * The customer has the opportunity to order advertising on popular social networks. Customers can use data filtering to find the right ad. They can also view their advertising orders and their status.
