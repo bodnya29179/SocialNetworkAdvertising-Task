@@ -5,7 +5,8 @@ Description of roles:
 * The customer has the opportunity to order advertising on popular social networks. Customers can use data filtering to find the right ad. They can also view their advertising orders and their status.
 * The performer has the opportunity to offer his services of advertising on social networks. The performer may confirm or reject the customer's order. 
 * The administrator has the ability to create, edit and delete data.
-Users have the ability to edit their profile. 
+
+Users have the ability to edit their profile.
 All data is stored in the MySQL database "socialnetworksadvertising". The server interacts with the database using SQL queries (CRUD) and stored procedures.
 
 ## Requirements
