@@ -65,20 +65,31 @@ Note: All data are invented.
 
 ### Sign in and Sign up pages
 
-<img src="https://i.ibb.co/jZqVC0S/1.png" alt="Sing In">
-<img src="https://i.ibb.co/z4qmnhj/2.png" alt="Sing Up">
+#### Sing in page
+<img src="https://i.ibb.co/jZqVC0S/1.png" alt="Sing in">
+
+#### Sing up page
+<img src="https://i.ibb.co/z4qmnhj/2.png" alt="Sing up">
 
 ### Customer pages examples
 
+#### Services page
 <img src="https://i.ibb.co/XLwJskf/3.png" alt="Services page">
+
+#### Orders page
 <img src="https://i.ibb.co/6FBVNqv/4.png" alt="Orders page">
+
+#### Profile edit page
 <img src="https://i.ibb.co/GJBc42h/5.png" alt="Profile edit page">
 
 ### Performer pages examples
 
+#### Service create form
 <img src="https://i.ibb.co/NFMnwQD/6.png" alt="Service create form">
+
+#### Orders
 <img src="https://i.ibb.co/L5TgB7d/7.png" alt="Orders page">
 
-### Admin pages examples
+### Admin page example
 
 <img src="https://i.ibb.co/BtCb8bf/8.png" alt="Social networks details page">
